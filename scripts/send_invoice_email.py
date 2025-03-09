@@ -96,11 +96,3 @@ def handler(invoice_information):
         print("Email sent successfully")
     except Exception as e:
         print(f"Failed to send email: {e}")
-
-
-if __name__ == '__main__':
-    # Load invoice details from JSON payload
-    with open('/Users/ramoneees/Documents/scripts/webhooks/sample_payment_received.json') as f:
-        data = json.load(f)
-        print(f"email body: {handler(data)}")
-        
