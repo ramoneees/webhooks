@@ -9,10 +9,10 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the working directory contents into the container at /app
-COPY webhook.py .
+COPY . .
 
 # Expose port 5000 for the Flask app
 EXPOSE 5000
 
 # Define the command to run the app
-CMD ["python", "webhook.py"]
+CMD ["python", "main.py"]
