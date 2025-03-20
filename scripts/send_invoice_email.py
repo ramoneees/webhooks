@@ -13,15 +13,15 @@ EMAIL_FROM = os.getenv('EMAIL_FROM')
 EMAIL_TO = os.getenv('EMAIL_TO')
 EMAIL_SUBJECT = os.getenv('EMAIL_SUBJECT', 'Geração de factura')
 
-FIREFLY_API_URL = os.getenv('FIREFLY_API_URL')
-FIREFLY_TOKEN = os.getenv('FIREFLY_TOKEN')
+INVOICENINJA_API_URL = os.getenv('INVOICENINJA_API_URL')
+INVOICENINJA_TOKEN = os.getenv('INVOICENINJA_TOKEN')
 
 headers = {
-    "X-API-TOKEN": FIREFLY_TOKEN,
+    "X-API-TOKEN": INVOICENINJA_TOKEN,
     "X-Requested-With": "XMLHttpRequest"
 }
 
-response = requests.get(FIREFLY_API_URL, headers=headers)
+response = requests.get(INVOICENINJA_API_URL, headers=headers)
 
 countries  = response.json().get('countries')
 currencies  = response.json().get('currencies')

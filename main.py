@@ -13,12 +13,8 @@ def webhook():
     if not data:
         return jsonify({"error": "Invalid or missing JSON data"}), 400
 
-    # Process the webhook data (for example, print it)
-    print("Received webhook data:", data)
-    
-    # You can add further processing logic here
-
-    return jsonify({"status": "success", "received": data}), 200
+    # Simply return the received JSON data
+    return jsonify(data), 200
 
 @app.route('/send-mail', methods=['POST'])
 def send_invoice():
