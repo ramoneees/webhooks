@@ -3,10 +3,6 @@ import json
 from email.mime.text import MIMEText
 import os
 import requests
-from dotenv import load_dotenv
-
-# Load environment variables from .env file
-load_dotenv()
 
 # Email configuration
 SMTP_SERVER = os.getenv('SMTP_SERVER')
