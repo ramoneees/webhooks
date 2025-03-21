@@ -3,6 +3,10 @@ import json
 from email.mime.text import MIMEText
 import os
 import requests
+import logging
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 # Email configuration
 SMTP_SERVER = os.getenv('SMTP_SERVER')
@@ -89,6 +93,6 @@ def handler(invoice_information):
         server.login(SMTP_USERNAME, SMTP_PASSWORD)
         server.sendmail(EMAIL_FROM, EMAIL_TO, msg.as_string())
         server.quit()
-        print("Email sent successfully")
+        logger.info("Email sent successfully")
     except Exception as e:
-        print(f"Failed to send email: {e}")
+        logger.error(f"Failed to send email: {e}")
