@@ -4,6 +4,10 @@ from email.mime.text import MIMEText
 import os
 import requests
 import logging
+from dotenv import load_dotenv
+
+# Load environment variables from a .env file
+load_dotenv()
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
