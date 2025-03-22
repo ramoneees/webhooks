@@ -1,0 +1,8 @@
+services:
+  webhooks:
+    image: ramonrios93/webhooks
+    build: .
+    ports:
+      - "8000:5000"
+    env_file:
+      - .env
