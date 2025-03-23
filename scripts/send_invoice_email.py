@@ -1,5 +1,5 @@
 import smtplib
-import json
+# import json  # Removed as it is not accessed
 from email.mime.text import MIMEText
 import os
 import requests
@@ -29,7 +29,15 @@ headers = {
     "X-Requested-With": "XMLHttpRequest"
 }
 
+required_env_vars = ['SMTP_SERVER', 'SMTP_USERNAME', 'SMTP_PASSWORD', 'EMAIL_FROM', 'EMAIL_TO', 'INVOICE_NINJA_API_URL', 'INVOICE_NINJA_TOKEN']
+missing_vars = [var for var in required_env_vars if not os.getenv(var)]
+if missing_vars:
+    raise EnvironmentError(f"Missing required environment variables: {', '.join(missing_vars)}")
+
 response = requests.get(INVOICENINJA_API_URL, headers=headers)
+if response.status_code != 200:
+    logger.error(f"Failed to fetch data from Invoice Ninja API: {response.status_code} {response.text}")
+    raise ValueError("Failed to fetch data from Invoice Ninja API.")
 
 countries  = response.json().get('countries')
 currencies  = response.json().get('currencies')
